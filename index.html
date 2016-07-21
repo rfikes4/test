@@ -2,12 +2,22 @@
   <body>
     <p id='server-time'></p>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
       var socket = io();
       var el = document.getElementById('server-time');
 
       socket.on('time', function(timeString) {
         el.innerHTML = 'Server time: ' + timeString;
+      });
+    </script>
+    <button>SEND</button>
+    <script>
+      jQuery(function($){
+        var socket = io.connect();
+        $('button').click(function(){
+            socket.emit('send message');
+        });
       });
     </script>
   </body>
