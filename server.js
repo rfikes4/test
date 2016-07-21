@@ -37,5 +37,7 @@ io.sockets.on('connection', function(socket){
 
     client.send('/composition/video/effect3/opacity/values', oscNum);
     console.log(oscMap);
+
+    io.sockets.emit('osc', oscMap);
   });
 });

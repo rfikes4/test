@@ -12,11 +12,17 @@
       });
     </script>
     <button>SEND</button>
+    <div id="osc"></div>
     <script>
       jQuery(function($){
         var socket = io.connect();
         $('button').click(function(){
             socket.emit('send message');
+        });
+        var $osc = $('#osc');
+        socket.on('osc', function(data){
+          $osc.html(data);
+          console.log(data);
         });
       });
     </script>
